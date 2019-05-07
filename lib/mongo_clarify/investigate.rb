@@ -9,14 +9,14 @@ module MongoClarify
     def operation_method
       if @explain[:queryPlanner]
         if @explain[:queryPlanner][:winningPlan][:stage] == 'COLLSCAN'
-          return 'Collection Scan'
+          'Collection Scan'
         elsif @explain[:queryPlanner][:winningPlan][:stage] == 'FETCH'
           if @explain[:queryPlanner][:winningPlan][:inputStage][:stage] == 'IXSCAN'
-            return "Index Scan (Index Name: #{@explain[:queryPlanner][:winningPlan][:inputStage][:indexName]})"
+            "Index Scan (Index Name: #{@explain[:queryPlanner][:winningPlan][:inputStage][:indexName]})"
           end
         end
       else
-        "Unknown"
+        'Unknown'
       end
     end
 

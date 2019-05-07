@@ -4,7 +4,7 @@
 $LOAD_PATH.unshift("#{__dir__}/../lib")
 
 require 'JSON'
-require 'mongo-clarify'
+require 'mongo_clarify'
 
 file = File.read("./#{ARGV[0]}")
 explain = JSON.parse(file, symbolize_names: true)

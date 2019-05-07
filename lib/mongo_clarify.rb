@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'mongo-clarify/investigate'
-require_relative 'mongo-clarify/output'
+require_relative 'mongo_clarify/investigate'
+require_relative 'mongo_clarify/output'
 
 module MongoClarify
   class << self

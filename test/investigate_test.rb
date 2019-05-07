@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'test/unit/autorunner'
 require 'JSON'
 
-require_relative '../lib/mongo-clarify/investigate'
+require_relative '../lib/mongo_clarify/investigate'
 
 class InvestigateTest < Test::Unit::TestCase
-
   test '#operation_method return COLLECTION SCAN' do
     file = File.read('./test/collection_scan.json')
     explain = JSON.parse(file, symbolize_names: true)

@@ -1,1 +1,15 @@
 require: rubocop-performance
+
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "lib/mongo_clarify/investigate_ruby2_7.rb"
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/LineLength:
+  Max: 120
