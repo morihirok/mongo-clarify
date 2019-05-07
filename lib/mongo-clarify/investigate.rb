@@ -11,7 +11,7 @@ module MongoClarify
       in { queryPlanner: { winningPlan: { stage: 'COLLSCAN' } } }
         'Collection Scan'
       in { queryPlanner: { winningPlan: { stage: 'FETCH', inputStage: { stage: 'IXSCAN', indexName: index_name } } } }
-        "Index Scan (Index Name: #{index_name} )"
+        "Index Scan (Index Name: #{index_name})"
       else
         'Unknown'
       end

@@ -1,0 +1,88 @@
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "sample_db.items",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"price" : {
+				"$eq" : 119
+			}
+		},
+		"winningPlan" : {
+			"stage" : "FETCH",
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"keyPattern" : {
+					"price" : 1
+				},
+				"indexName" : "price_1",
+				"isMultiKey" : false,
+				"direction" : "forward",
+				"indexBounds" : {
+					"price" : [
+						"[119.0, 119.0]"
+					]
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 1,
+		"executionTimeMillis" : 13,
+		"totalKeysExamined" : 1,
+		"totalDocsExamined" : 1,
+		"executionStages" : {
+			"stage" : "FETCH",
+			"nReturned" : 1,
+			"executionTimeMillisEstimate" : 0,
+			"works" : 2,
+			"advanced" : 1,
+			"needTime" : 0,
+			"needFetch" : 0,
+			"saveState" : 0,
+			"restoreState" : 0,
+			"isEOF" : 1,
+			"invalidates" : 0,
+			"docsExamined" : 1,
+			"alreadyHasObj" : 0,
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"nReturned" : 1,
+				"executionTimeMillisEstimate" : 0,
+				"works" : 2,
+				"advanced" : 1,
+				"needTime" : 0,
+				"needFetch" : 0,
+				"saveState" : 0,
+				"restoreState" : 0,
+				"isEOF" : 1,
+				"invalidates" : 0,
+				"keyPattern" : {
+					"price" : 1
+				},
+				"indexName" : "price_1",
+				"isMultiKey" : false,
+				"direction" : "forward",
+				"indexBounds" : {
+					"price" : [
+						"[119.0, 119.0]"
+					]
+				},
+				"keysExamined" : 1,
+				"dupsTested" : 0,
+				"dupsDropped" : 0,
+				"seenInvalidated" : 0,
+				"matchTested" : 0
+			}
+		}
+	},
+	"serverInfo" : {
+		"host" : "MacBook-Pro.local",
+		"port" : 27017,
+		"version" : "3.0.2",
+		"gitVersion" : "nogitversion"
+	},
+	"ok" : 1
+}
