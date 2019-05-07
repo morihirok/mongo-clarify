@@ -7,22 +7,25 @@ module MongoClarify
     end
 
     def operation_method
-      case @explain
-      in { queryPlanner: { winningPlan: { stage: 'COLLSCAN' } } }
-        'Collection Scan'
-      in { queryPlanner: { winningPlan: { stage: 'FETCH', inputStage: { stage: 'IXSCAN', indexName: index_name } } } }
-        "Index Scan (Index Name: #{index_name})"
+      if @explain[:queryPlanner]
+        if @explain[:queryPlanner][:winningPlan][:stage] == 'COLLSCAN'
+          return 'Collection Scan'
+        elsif @explain[:queryPlanner][:winningPlan][:stage] == 'FETCH'
+          if @explain[:queryPlanner][:winningPlan][:inputStage][:stage] == 'IXSCAN'
+            return "Index Scan (Index Name: #{@explain[:queryPlanner][:winningPlan][:inputStage][:indexName]})"
+          end
+        end
       else
-        'Unknown'
+        "Unknown"
       end
     end
 
     def execution_stats
-      case @explain
-      in { executionStats: { nReturned: n, executionTimeMillis: msec, totalKeysExamined: keys, totalDocsExamined: docs } }
+      if @explain[:executionStats]
+        { n_returned: @explain[:executionStats][:nReturned], execution_time_millis: @explain[:executionStats][:executionTimeMillis], total_keys_examined: @explain[:executionStats][:totalKeysExamined], total_docs_examined: @explain[:executionStats][:totalDocsExamined] }
       else
+        { n_returned: nil, execution_time_millis: nil, total_keys_examined: nil, total_docs_examined: nil }
       end
-      { n_returned: n, execution_time_millis: msec, total_keys_examined: keys, total_docs_examined: docs }
     end
   end
 end
