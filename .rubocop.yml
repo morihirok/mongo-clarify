@@ -3,6 +3,7 @@ require: rubocop-performance
 AllCops:
   Exclude:
     - "vendor/**/*"
+    - "spec/spec_helper.rb"
     - "lib/mongo_clarify/investigate_ruby2_7.rb"
 
 Style/Documentation:
