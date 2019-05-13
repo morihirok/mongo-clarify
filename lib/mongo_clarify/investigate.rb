@@ -20,7 +20,7 @@ module MongoClarify
         end
       end
     rescue PatternMatch::NoMatchingPatternError
-      'Unknown'
+      nil
     end
 
     def execution_stats

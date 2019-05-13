@@ -24,7 +24,7 @@ RSpec.describe MongoClarify::Investigate do
     context 'When does not match any pattern' do
       let(:investigate) { MongoClarify::Investigate.new({}) }
 
-      it { is_expected.to eq 'Unknown' }
+      it { is_expected.to be nil }
     end
   end
 end
