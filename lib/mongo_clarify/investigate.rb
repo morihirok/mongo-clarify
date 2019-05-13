@@ -26,11 +26,16 @@ module MongoClarify
     def execution_stats
       match(@explain) do
         with(Hash.(executionStats: Hash.(nReturned: n, executionTimeMillis: msec, totalKeysExamined: keys, totalDocsExamined: docs))) do
-          { n_returned: n, execution_time_millis: msec, total_keys_examined: keys, total_docs_examined: docs }
+          {
+            n_returned: n,
+            execution_time_millis: msec,
+            total_keys_examined: keys,
+            total_docs_examined: docs
+          }
         end
       end
     rescue PatternMatch::NoMatchingPatternError
-      { n_returned: nil, execution_time_millis: nil, total_keys_examined: nil, total_docs_examined: nil }
+      nil
     end
   end
 end
