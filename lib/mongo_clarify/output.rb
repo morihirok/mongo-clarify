@@ -9,8 +9,8 @@ module MongoClarify
 
     def markdown_table
       puts <<~EXPLAIN
-        | | |
-        | ---- | ---- |
+        | Key | Value |
+        | --- | --- |
         | Means of Operation  | #{@operation_method} |
         | nReturned           | #{@exec_stats[:n_returned]} |
         | executionTimeMillis | #{@exec_stats[:execution_time_millis]} msec |
