@@ -4,25 +4,27 @@ require 'JSON'
 require_relative '../lib/mongo_clarify/investigate'
 
 RSpec.describe MongoClarify::Investigate do
-  it '#operation_method return COLLECTION SCAN' do
-    file = File.read('./spec/collection_scan.json')
-    explain = JSON.parse(file, symbolize_names: true)
-    investigate = MongoClarify::Investigate.new(explain)
+  describe '#operation_method' do
+    subject { investigate.operation_method }
+    let(:investigate) { MongoClarify::Investigate.new(explain) }
+    let(:explain) { JSON.parse(file, symbolize_names: true) }
 
-    expect(investigate.operation_method).to eq 'Collection Scan'
-  end
+    context 'When pattern of explain json is collection scan' do
+      let(:file) { File.read('./spec/collection_scan.json') }
 
-  it '#operation_method return Index Scan with index name' do
-    file = File.read('./spec/index_scan.json')
-    explain = JSON.parse(file, symbolize_names: true)
-    investigate = MongoClarify::Investigate.new(explain)
+      it { is_expected.to eq 'Collection Scan' }
+    end
 
-    expect(investigate.operation_method).to eq 'Index Scan (Index Name: price_1)'
-  end
+    context 'When pattern of explain json is index scan' do
+      let(:file) { File.read('./spec/index_scan.json') }
 
-  it '#operation_method return Unknown' do
-    investigate = MongoClarify::Investigate.new({})
+      it { is_expected.to eq 'Index Scan (Index Name: price_1)' }
+    end
 
-    expect(investigate.operation_method).to eq 'Unknown'
+    context 'When does not match any pattern' do
+      let(:investigate) { MongoClarify::Investigate.new({}) }
+
+      it { is_expected.to eq 'Unknown' }
+    end
   end
 end
