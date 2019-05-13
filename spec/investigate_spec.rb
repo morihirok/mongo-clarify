@@ -36,23 +36,27 @@ RSpec.describe MongoClarify::Investigate do
     context 'When pattern of explain json is collection scan' do
       let(:file) { File.read('./spec/collection_scan.json') }
 
-      it { is_expected.to eq({
-        n_returned: 1,
-        execution_time_millis: 59,
-        total_keys_examined: 0,
-        total_docs_examined: 100000
-      }) }
+      it {
+        is_expected.to eq(
+          n_returned: 1,
+          execution_time_millis: 59,
+          total_keys_examined: 0,
+          total_docs_examined: 100_000
+        )
+      }
     end
 
     context 'When pattern of explain json is index scan' do
       let(:file) { File.read('./spec/index_scan.json') }
 
-      it { is_expected.to eq({
-        n_returned: 1,
-        execution_time_millis: 13,
-        total_keys_examined: 1,
-        total_docs_examined: 1
-      }) }
+      it {
+        is_expected.to eq(
+          n_returned: 1,
+          execution_time_millis: 13,
+          total_keys_examined: 1,
+          total_docs_examined: 1
+        )
+      }
     end
 
     context 'When does not match any pattern' do
