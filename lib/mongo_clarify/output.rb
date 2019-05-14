@@ -13,6 +13,7 @@ module MongoClarify
       elsif @exec_stats.nil?
         return puts means_of_operation_only_table(@operation_method)
       end
+
       puts full_table
     end
 
