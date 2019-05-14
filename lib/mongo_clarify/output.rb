@@ -8,7 +8,9 @@ module MongoClarify
     end
 
     def markdown_table
-      if @exec_stats.nil?
+      if @operation_method.nil? && @exec_stats.nil?
+        return puts 'Could not parse this explain...'
+      elsif @exec_stats.nil?
         return puts means_of_operation_only_table(@operation_method)
       end
       puts full_table

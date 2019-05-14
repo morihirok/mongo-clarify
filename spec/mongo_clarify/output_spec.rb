@@ -76,5 +76,15 @@ RSpec.describe MongoClarify::Output do
         expect { instance.markdown_table }.to output(result).to_stdout
       end
     end
+
+    context 'When both of args are nil' do
+      let(:operation_method) { nil }
+      let(:exec_stats) { nil }
+      let(:result) { "Could not parse this explain...\n" }
+
+      it 'displays markdown table to stdout' do
+        expect { instance.markdown_table }.to output(result).to_stdout
+      end
+    end
   end
 end
