@@ -11,7 +11,7 @@ module MongoClarify
       puts <<~EXPLAIN
         | Key | Value |
         | --- | --- |
-        | Means of Operation  | #{@operation_method} |
+        | Means of Operation  | #{@operation_method || 'Unknown'} |
         | nReturned           | #{@exec_stats[:n_returned]} |
         | executionTimeMillis | #{@exec_stats[:execution_time_millis]} msec |
         | totalKeysExamined   | #{@exec_stats[:total_keys_examined]} |
