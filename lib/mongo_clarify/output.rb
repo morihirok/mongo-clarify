@@ -8,7 +8,16 @@ module MongoClarify
     end
 
     def markdown_table
-      puts <<~EXPLAIN
+      if @exec_stats.nil?
+        return puts means_of_operation_only_table(@operation_method)
+      end
+      puts full_table
+    end
+
+    private
+
+    def full_table
+      <<~EXPLAIN
         | Key | Value |
         | --- | --- |
         | Means of Operation  | #{@operation_method || 'Unknown'} |
@@ -16,6 +25,15 @@ module MongoClarify
         | executionTimeMillis | #{@exec_stats[:execution_time_millis]} msec |
         | totalKeysExamined   | #{@exec_stats[:total_keys_examined]} |
         | totalDocsExamined   | #{@exec_stats[:total_docs_examined]} |
+      EXPLAIN
+    end
+
+    def means_of_operation_only_table(operation_method)
+      <<~EXPLAIN
+        | Key | Value |
+        | --- | --- |
+        | Means of Operation  | #{operation_method} |
+        | Execution Stats     | Not detected |
       EXPLAIN
     end
   end

@@ -59,5 +59,22 @@ RSpec.describe MongoClarify::Output do
         expect { instance.markdown_table }.to output(result).to_stdout
       end
     end
+
+    context 'When exec_stats is nil' do
+      let(:operation_method) { 'Collection Scan' }
+      let(:exec_stats) { nil }
+      let(:result) do
+        <<~RESULT
+          | Key | Value |
+          | --- | --- |
+          | Means of Operation  | #{operation_method} |
+          | Execution Stats     | Not detected |
+        RESULT
+      end
+
+      it 'displays markdown table to stdout' do
+        expect { instance.markdown_table }.to output(result).to_stdout
+      end
+    end
   end
 end
