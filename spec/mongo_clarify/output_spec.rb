@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/mongo_clarify/output'
+require_relative '../../lib/mongo_clarify/output'
 
 RSpec.describe MongoClarify::Output do
   describe '#markdown_table' do
