@@ -14,3 +14,7 @@ Metrics/AbcSize:
 
 Metrics/LineLength:
   Max: 120
+
+Style/LambdaCall:
+  Exclude:
+    - "lib/mongo_clarify/investigate.rb"
