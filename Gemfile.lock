@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     mongo_clarify (0.1.0)
+      pattern-match
 
 GEM
   remote: https://rubygems.org/
