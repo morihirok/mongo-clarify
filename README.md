@@ -6,13 +6,13 @@ MongoDB explain is a little hard to read because it is JSON.
 
 This program makes it possible to convert MongoDB explain into Markdown table format. As below.
 
-| | |
-| ---- | ---- |
-| Means of Operation  | Index Scan (Index Name: price_1) |
+| Key | Value |
+| --- | --- |
+| Means of Operation  | Collection Scan |
 | nReturned           | 1 |
-| executionTimeMillis | 13 msec |
-| totalKeysExamined   | 1 |
-| totalDocsExamined   | 1 |
+| executionTimeMillis | 59 msec |
+| totalKeysExamined   | 0 |
+| totalDocsExamined   | 100000 |
 
 ## Installation
 
@@ -32,13 +32,13 @@ Or install it yourself as:
 
 In the case of CLI.
 
-```
+```sh
 $ mongo_clarify <Json file of MongoDB explain>
 ```
 
 If you are using Mongoid.
 
-```
+```ruby
 MongoClarify.run(Model.where(query).explain)
 ```
 
