@@ -30,7 +30,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In the case of CLI.
+
+```
+$ mongo_clarify <Json file of MongoDB explain>
+```
+
+If you are using Mongoid.
+
+```
+MongoClarify.run(Model.where(query).explain)
+```
 
 ## Development
 
