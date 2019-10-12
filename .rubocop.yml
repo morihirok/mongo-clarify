@@ -4,7 +4,7 @@ AllCops:
   Exclude:
     - "vendor/**/*"
     - "spec/spec_helper.rb"
-    - "lib/mongo_clarify/investigate_ruby2_7.rb"
+    - "lib/mongo_clarify/investigate_with_pattern_matching.rb"
 
 Style/Documentation:
   Enabled: false
@@ -17,4 +17,4 @@ Metrics/LineLength:
 
 Style/LambdaCall:
   Exclude:
-    - "lib/mongo_clarify/investigate.rb"
+    - "lib/mongo_clarify/investigate_without_pattern_matching.rb"

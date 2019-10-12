@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MongoClarify
-  class InvestigateRuby2_7
+  class Investigate
     def initialize(explain)
       @explain = explain
     end

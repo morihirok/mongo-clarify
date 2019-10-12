@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'JSON'
-require_relative '../../lib/mongo_clarify/investigate'
+require_relative '../../lib/mongo_clarify/investigate_without_pattern_matching'
 
 RSpec.describe MongoClarify::Investigate do
   describe '#operation_method' do

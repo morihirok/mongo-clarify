@@ -2,7 +2,7 @@
 
 require 'mongo_clarify/version'
 
-require_relative 'mongo_clarify/investigate'
+require_relative 'mongo_clarify/investigate_without_pattern_matching'
 require_relative 'mongo_clarify/output'
 
 module MongoClarify
