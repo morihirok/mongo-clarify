@@ -13,7 +13,7 @@ module MongoClarify
       in { queryPlanner: { winningPlan: { stage: 'FETCH', inputStage: { stage: 'IXSCAN', indexName: index_name } } } }
         "Index Scan (Index Name: #{index_name})"
       else
-        'Unknown'
+        nil
       end
     end
 
@@ -21,6 +21,7 @@ module MongoClarify
       case @explain
       in { executionStats: { nReturned: n, executionTimeMillis: msec, totalKeysExamined: keys, totalDocsExamined: docs } }
       else
+        return
       end
       { n_returned: n, execution_time_millis: msec, total_keys_examined: keys, total_docs_examined: docs }
     end
