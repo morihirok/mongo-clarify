@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'JSON'
+require 'json'
 require_relative '../../lib/mongo_clarify/investigate'
 
 RSpec.describe MongoClarify::Investigate do
