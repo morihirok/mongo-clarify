@@ -4,8 +4,4 @@ rvm:
   - 2.6.5
   - ruby-2.7.0-preview1
 
-before_install:
-  - gem install bundler -v 1.16.1
-  - gem install json
-
 script: bundle exec rspec
