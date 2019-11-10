@@ -1,0 +1,4 @@
+class MongoClarify::Output
+  def initialize: (String? operation_method, Hash[Symbol, Integer]? exec_status) -> void
+  def markdown_table: () -> void
+end
